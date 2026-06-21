@@ -151,9 +151,8 @@ function AnalysisOverlay({
   elapsedSeconds: number;
   onUseFallback: () => void;
 }) {
-  // Cycle active agent based on elapsed time (~20 s each)
   const activeAgent = Math.min(Math.floor(elapsedSeconds / 20), AGENTS.length - 1);
-  const showFallback = elapsedSeconds >= 90; // offer fallback after 90 s
+  const showFallback = elapsedSeconds >= 90;
   const pct = Math.min(95, Math.round((elapsedSeconds / 180) * 100));
   const mins = Math.floor(elapsedSeconds / 60);
   const secs = elapsedSeconds % 60;
@@ -162,50 +161,46 @@ function AnalysisOverlay({
     <div
       style={{ position: "fixed", inset: 0, zIndex: 9999, background: "#0b1c30", display: "flex", alignItems: "center", justifyContent: "center" }}
     >
-      {/* subtle dot-grid background */}
       <div
         aria-hidden
         style={{
           position: "absolute", inset: 0, opacity: 0.07,
-          backgroundImage: "radial-gradient(circle, #3525cd 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, #8b5cf6 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
 
-      {/* centred card */}
       <div style={{ position: "relative", width: "100%", maxWidth: "640px", padding: "0 24px", textAlign: "center" }}>
 
-        {/* pulsing logo */}
         <div style={{ display: "flex", justifyContent: "center", marginBottom: "28px" }}>
           <div style={{ position: "relative" }}>
             <div style={{
               position: "absolute", inset: "-12px",
               borderRadius: "50%",
-              border: "2px solid rgba(53,37,205,0.4)",
+              border: "2px solid rgba(139,92,246,0.4)",
               animation: "ping 2s cubic-bezier(0,0,0.2,1) infinite",
             }} />
             <div style={{
               width: "72px", height: "72px", borderRadius: "18px",
-              background: "#3525cd",
+              background: "linear-gradient(135deg, #3525cd 0%, #6b38d4 100%)",
               display: "flex", alignItems: "center", justifyContent: "center",
-              boxShadow: "0 0 40px rgba(53,37,205,0.5)",
+              boxShadow: "0 0 40px rgba(107,56,212,0.6), 0 0 80px rgba(53,37,205,0.3)",
             }}>
               <ShieldCheck style={{ width: "36px", height: "36px", color: "#fff" }} />
             </div>
           </div>
         </div>
 
-        <h2 style={{ color: "#ffffff", fontSize: "24px", fontWeight: 700, marginBottom: "6px", fontFamily: "Hanken Grotesk, sans-serif" }}>
+        <h2 style={{ color: "#ffffff", fontSize: "24px", fontWeight: 700, marginBottom: "6px" }}>
           AI Security Analysis Running
         </h2>
-        <p style={{ color: "#7dd3fc", fontSize: "14px", fontFamily: "JetBrains Mono, monospace", marginBottom: "4px" }}>
+        <p style={{ color: "#c4b5fd", fontSize: "14px", marginBottom: "4px" }}>
           {repoName}
         </p>
         <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "13px", marginBottom: "28px" }}>
           {mins}m {secs < 10 ? `0${secs}` : secs}s elapsed · typically takes 1–3 minutes
         </p>
 
-        {/* agent list */}
         <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "24px" }}>
           {AGENTS.map((agent, idx) => {
             const isDone   = idx < activeAgent;
@@ -217,14 +212,14 @@ function AnalysisOverlay({
                   display: "flex", alignItems: "center", gap: "14px",
                   borderRadius: "12px", padding: "12px 16px",
                   border: isActive
-                    ? "1px solid rgba(125,211,252,0.4)"
+                    ? "1px solid rgba(139,92,246,0.4)"
                     : isDone
-                      ? "1px solid rgba(45,212,191,0.25)"
+                      ? "1px solid rgba(167,139,250,0.25)"
                       : "1px solid rgba(255,255,255,0.07)",
                   background: isActive
-                    ? "rgba(14,116,144,0.18)"
+                    ? "rgba(99,102,241,0.15)"
                     : isDone
-                      ? "rgba(20,83,75,0.18)"
+                      ? "rgba(139,92,246,0.1)"
                       : "rgba(255,255,255,0.03)",
                   opacity: isActive || isDone ? 1 : 0.4,
                   transition: "all 0.4s ease",
@@ -233,23 +228,22 @@ function AnalysisOverlay({
                 <span style={{ fontSize: "20px", lineHeight: 1 }}>{agent.icon}</span>
                 <div style={{ flex: 1, textAlign: "left", minWidth: 0 }}>
                   <p style={{
-                    color: isActive ? "#7dd3fc" : isDone ? "#5eead4" : "rgba(255,255,255,0.5)",
+                    color: isActive ? "#e0e7ff" : isDone ? "#ddd6fe" : "rgba(255,255,255,0.5)",
                     fontWeight: 600, fontSize: "13px",
-                    whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
                   }}>
                     {agent.name}
                   </p>
                   {isActive && (
-                    <p style={{ color: "rgba(125,211,252,0.65)", fontSize: "11px", marginTop: "2px" }}>
+                    <p style={{ color: "rgba(199,210,254,0.7)", fontSize: "11px", marginTop: "2px" }}>
                       {agent.desc}
                     </p>
                   )}
                 </div>
                 <div style={{ flexShrink: 0 }}>
                   {isDone ? (
-                    <CheckCircle2 style={{ width: "18px", height: "18px", color: "#5eead4" }} />
+                    <CheckCircle2 style={{ width: "18px", height: "18px", color: "#a78bfa" }} />
                   ) : isActive ? (
-                    <Loader2 style={{ width: "18px", height: "18px", color: "#7dd3fc", animation: "spin 1s linear infinite" }} />
+                    <Loader2 style={{ width: "18px", height: "18px", color: "#818cf8", animation: "spin 1s linear infinite" }} />
                   ) : (
                     <div style={{ width: "18px", height: "18px", borderRadius: "50%", border: "2px solid rgba(255,255,255,0.15)" }} />
                   )}
@@ -259,19 +253,17 @@ function AnalysisOverlay({
           })}
         </div>
 
-        {/* progress bar */}
         <div style={{ width: "100%", height: "4px", borderRadius: "4px", background: "rgba(255,255,255,0.08)", marginBottom: "20px", overflow: "hidden" }}>
           <div style={{
             height: "100%", borderRadius: "4px",
-            background: "linear-gradient(to right, #7dd3fc, #3525cd)",
+            background: "linear-gradient(to right, #818cf8, #6366f1)",
             width: `${pct}%`, transition: "width 1s ease",
           }} />
         </div>
 
-        {/* fallback button */}
         {showFallback && (
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-            <p style={{ color: "#fcd34d", fontSize: "13px" }}>
+            <p style={{ color: "#fbbf24", fontSize: "13px" }}>
               Taking longer than expected — view a sample report while waiting.
             </p>
             <button
@@ -280,9 +272,9 @@ function AnalysisOverlay({
               style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 padding: "10px 20px", borderRadius: "10px", cursor: "pointer",
-                border: "1px solid rgba(251,191,36,0.4)",
-                background: "rgba(120,53,15,0.35)",
-                color: "#fcd34d", fontSize: "13px", fontWeight: 600,
+                border: "1px solid rgba(251,191,36,0.3)",
+                background: "rgba(180,83,9,0.2)",
+                color: "#fbbf24", fontSize: "13px", fontWeight: 600,
               }}
             >
               <Zap style={{ width: "14px", height: "14px" }} />
@@ -363,12 +355,26 @@ export default function ConnectProject() {
 
   /* navigate to dashboard with a report */
   function finishWithReport(report: AuditReport) {
-    stopOverlay();
-    setAnalyzingRepoId(null);
-    saveReportForDashboard(report);
-    void persistReportToSupabase(report).catch(() => undefined);
-    toast.success("Analysis complete! Opening your report…");
-    router.push("/dashboard");
+    const minWaitSeconds = 120;
+    const remainingDelayMs = Math.max(0, (minWaitSeconds - elapsedSeconds) * 1000);
+
+    if (remainingDelayMs > 0) {
+      setTimeout(() => {
+        stopOverlay();
+        setAnalyzingRepoId(null);
+        saveReportForDashboard(report);
+        void persistReportToSupabase(report).catch(() => undefined);
+        toast.success("Analysis complete! Opening your report…");
+        router.push("/dashboard");
+      }, remainingDelayMs);
+    } else {
+      stopOverlay();
+      setAnalyzingRepoId(null);
+      saveReportForDashboard(report);
+      void persistReportToSupabase(report).catch(() => undefined);
+      toast.success("Analysis complete! Opening your report…");
+      router.push("/dashboard");
+    }
   }
 
   /* build & use the sample fallback for the given repo name */
@@ -389,11 +395,11 @@ export default function ConnectProject() {
   const auditMutation = useAudit({
     onSuccess: (report) => finishWithReport(report),
     onError: (error) => {
-      // Always fall back to sample data — never show the raw 502 error to the user
-      const msg = error instanceof Error ? error.message : "";
-      console.warn("Audit webhook error (using sample data):", msg);
-      toast("Audit workflow is slow — showing sample report.", { icon: "⚡" });
-      loadFallback(overlayRepoName || "your-repository");
+      const msg = error instanceof Error ? error.message : "Analysis failed.";
+      stopOverlay();
+      setAnalyzingRepoId(null);
+      toast.error(msg);
+      setNotice({ kind: "error", message: msg });
     },
   });
 
