@@ -27,7 +27,7 @@ import { useAudit } from "@/hooks/useAudit";
 import { filterSourceFiles } from "@/lib/file-filter";
 import { persistReportToSupabase } from "@/lib/report-persistence";
 import { saveReportForDashboard } from "@/lib/report-storage";
-import { sampleReport } from "@/lib/sample-report";
+
 import { isSupabaseConfigured, supabase } from "@/lib/supabase";
 import type { AuditPayload, AuditReport, RepoSummary, SourceFile } from "@/lib/types";
 
@@ -145,14 +145,11 @@ function PatInstructions() {
 function AnalysisOverlay({
   repoName,
   elapsedSeconds,
-  onUseFallback,
 }: {
   repoName: string;
   elapsedSeconds: number;
-  onUseFallback: () => void;
 }) {
   const activeAgent = Math.min(Math.floor(elapsedSeconds / 20), AGENTS.length - 1);
-  const showFallback = elapsedSeconds >= 90;
   const pct = Math.min(95, Math.round((elapsedSeconds / 180) * 100));
   const mins = Math.floor(elapsedSeconds / 60);
   const secs = elapsedSeconds % 60;
@@ -261,30 +258,6 @@ function AnalysisOverlay({
           }} />
         </div>
 
-        {showFallback && (
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-            <p style={{ color: "#fbbf24", fontSize: "13px" }}>
-              Taking longer than expected — view a sample report while waiting.
-            </p>
-            <button
-              onClick={onUseFallback}
-              type="button"
-              style={{
-                display: "inline-flex", alignItems: "center", gap: "8px",
-                padding: "10px 20px", borderRadius: "10px", cursor: "pointer",
-                border: "1px solid rgba(251,191,36,0.3)",
-                background: "rgba(180,83,9,0.2)",
-                color: "#fbbf24", fontSize: "13px", fontWeight: 600,
-              }}
-            >
-              <Zap style={{ width: "14px", height: "14px" }} />
-              Use sample report for now
-            </button>
-            <p style={{ color: "rgba(255,255,255,0.25)", fontSize: "11px" }}>
-              Real analysis continues in the background.
-            </p>
-          </div>
-        )}
       </div>
 
       {/* keyframe styles injected inline */}
@@ -358,38 +331,21 @@ export default function ConnectProject() {
     const minWaitSeconds = 120;
     const remainingDelayMs = Math.max(0, (minWaitSeconds - elapsedSeconds) * 1000);
 
-    if (remainingDelayMs > 0) {
-      setTimeout(() => {
-        stopOverlay();
-        setAnalyzingRepoId(null);
-        saveReportForDashboard(report);
-        void persistReportToSupabase(report).catch(() => undefined);
-        toast.success("Analysis complete! Opening your report…");
-        router.push("/dashboard");
-      }, remainingDelayMs);
-    } else {
-      stopOverlay();
-      setAnalyzingRepoId(null);
+    const complete = () => {
       saveReportForDashboard(report);
       void persistReportToSupabase(report).catch(() => undefined);
       toast.success("Analysis complete! Opening your report…");
       router.push("/dashboard");
+    };
+
+    if (remainingDelayMs > 0) {
+      setTimeout(complete, remainingDelayMs);
+    } else {
+      complete();
     }
   }
 
-  /* build & use the sample fallback for the given repo name */
-  function loadFallback(repoName: string) {
-    const report: AuditReport = {
-      ...sampleReport,
-      id: `${repoName}-${Date.now()}`,
-      metadata: {
-        ...sampleReport.metadata,
-        repoName,
-        auditTimestamp: new Date().toISOString(),
-      },
-    };
-    finishWithReport(report);
-  }
+
 
   /* mutations */
   const auditMutation = useAudit({
@@ -516,7 +472,6 @@ export default function ConnectProject() {
       {showOverlay && (
         <AnalysisOverlay
           elapsedSeconds={elapsedSeconds}
-          onUseFallback={() => { stopOverlay(); setAnalyzingRepoId(null); loadFallback(overlayRepoName); }}
           repoName={overlayRepoName}
         />
       )}
