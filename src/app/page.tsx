@@ -1,3 +1,4 @@
+import AgentsPipeline from "@/components/home/AgentsPipeline";
 import Features from "@/components/home/Features";
 import Hero from "@/components/home/Hero";
 import StatusLogs from "@/components/home/StatusLogs";
@@ -12,6 +13,9 @@ export default function Home() {
         <Hero />
         <div id="features">
           <Features />
+        </div>
+        <div id="agents-pipeline">
+          <AgentsPipeline />
         </div>
         <div id="reasoning">
           <StatusLogs />

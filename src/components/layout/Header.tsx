@@ -11,8 +11,9 @@ type HeaderVariant = "landing" | "dashboard" | "auth";
 const navItems: Record<HeaderVariant, { label: string; href: string }[]> = {
   landing: [
     { label: "Home", href: "/" },
-    { label: "Repositories", href: "/#features" },
-    { label: "Scan History", href: "/#reasoning" },
+    { label: "Features", href: "/#features" },
+    { label: "Pipeline", href: "/#agents-pipeline" },
+    { label: "Reasoning", href: "/#reasoning" },
   ],
   dashboard: [
     { label: "Connect", href: "/connect_your_first_project" },
@@ -21,6 +22,7 @@ const navItems: Record<HeaderVariant, { label: string; href: string }[]> = {
   ],
   auth: [
     { label: "Features", href: "/#features" },
+    { label: "Pipeline", href: "/#agents-pipeline" },
     { label: "Reasoning", href: "/#reasoning" },
   ],
 };
