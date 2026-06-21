@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RepoGuard AI | Security Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;family=Hanken+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: #ffffff;
+            border: 1px solid #e5eeff;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .glow-cyan:focus-within {
+            box-shadow: 0 0 15px rgba(77, 68, 227, 0.15);
+            border-color: #4d44e3;
+        }
+        .repo-card-gradient {
+            background: #ffffff;
+        }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .animate-pulse-soft {
+            animation: pulse-soft 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#fffbff",
+                        "background": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-primary": "#c3c0ff",
+                        "primary-fixed": "#e2dfff",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "surface-tint": "#4d44e3",
+                        "surface-container": "#e5eeff",
+                        "tertiary": "#7e3000",
+                        "outline": "#777587",
+                        "surface": "#f8f9ff",
+                        "secondary-fixed": "#e9ddff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-surface-variant": "#464555",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "primary": "#3525cd",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#dad7ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "primary-container": "#4f46e5",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-container": "#8455ef",
+                        "on-tertiary-container": "#ffd2be",
+                        "on-tertiary-fixed": "#351000",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container-low": "#eff4ff",
+                        "on-primary-fixed": "#0f0069",
+                        "on-background": "#0b1c30",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "secondary": "#6b38d4",
+                        "tertiary-container": "#a44100",
+                        "tertiary-fixed": "#ffdbcc",
+                        "outline-variant": "#c7c4d8",
+                        "on-surface": "#0b1c30"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "margin-desktop": "40px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "2xl": "64px",
+                        "lg": "24px",
+                        "xl": "48px",
+                        "stack-sm": "8px",
+                        "container-padding": "24px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-container-padding h-16 w-full bg-surface-container-low backdrop-blur-xl border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-stack-lg">
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">RepoGuard AI</span>
+<nav class="hidden md:flex items-center gap-gutter">
+<a class="font-body-md text-secondary border-b-2 border-secondary pb-1" href="#">Repositories</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Scan History</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Documentation</a>
+</nav>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="bg-surface-container h-10 pl-10 pr-4 rounded-lg border-none ring-1 ring-outline-variant focus:ring-2 focus:ring-primary text-body-sm w-64 transition-all" placeholder="Search repositories..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md transition-all active:scale-95 shadow-sm">SSO Login</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional user profile avatar for a security engineer, featuring a minimalist geometric design with shades of navy and cyan, styled in a clean, modern corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGKZYJYhCqLlFfFgnjdMxDLS9YCvHhL0jzvTxbjZaqi2wZ4c0pwr8yhl4t34l_W4w4kJtbTOyTJchA0xV1icG8TsrG6qAyLVrTccoYL7pBr_u24PHv4NA6oppoY0KxPuevibhGv4nVO5lsZWW6WpHYLuLSM1vS-FwSQzmZdddLnvx_YDA--VLet33lLA3lxk77guZqRT0tMjHtyhHvzMM_NIOQqxlXeAazJo-5ua4JjArjoMpv2c_7KD6S8A1wSpCXT8jiYSewmIM"/>
+</div>
+</div>
+</header>
+<div class="flex">
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-[280px] flex flex-col py-stack-lg bg-surface-container-lowest border-r border-outline-variant z-40">
+<div class="px-6 mb-stack-lg">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-secondary-fixed rounded-xl flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<h2 class="font-headline-md text-[18px] text-on-surface">Security Core</h2>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold opacity-60">v2.4.0-stable</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-fixed text-secondary rounded-lg font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-all duration-200 rounded-lg font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+                Projects
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-all duration-200 rounded-lg font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Reports
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-all duration-200 rounded-lg font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="px-6 py-stack-md">
+<button class="w-full py-3 bg-primary text-on-primary rounded-xl font-label-md flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:brightness-110 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                Run New Audit
+            </button>
+</div>
+<footer class="mt-auto px-4 border-t border-outline-variant pt-stack-md pb-4">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+                Logs
+            </a>
+</footer>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-[280px] min-h-[calc(100vh-64px)] p-container-padding bg-background relative overflow-hidden">
+<!-- Decorative background elements -->
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="max-w-7xl mx-auto space-y-stack-lg relative z-10">
+<!-- Dashboard Header Section -->
+<header class="flex flex-col md:flex-row justify-between items-end gap-gutter">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Security Dashboard</h1>
+<p class="text-on-surface-variant font-body-lg">Real-time oversight of your ecosystem's vulnerabilities.</p>
+</div>
+<div class="flex gap-4">
+<div class="glass-panel px-6 py-3 rounded-xl">
+<p class="text-on-surface-variant font-label-sm uppercase mb-1">Status</p>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="font-label-md text-secondary">All Agents Active</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Summary Grid (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-1 glass-panel p-6 rounded-2xl flex flex-col justify-between border-t-4 border-primary">
+<div>
+<p class="text-on-surface-variant font-label-sm uppercase mb-4">Coverage</p>
+<h3 class="font-display-lg text-primary">3 Repos</h3>
+</div>
+<p class="text-on-surface-variant text-body-sm mt-4">Linked &amp; actively monitored.</p>
+</div>
+<div class="md:col-span-1 glass-panel p-6 rounded-2xl flex flex-col justify-between border-t-4 border-error">
+<div>
+<p class="text-on-surface-variant font-label-sm uppercase mb-4">High Risk</p>
+<h3 class="font-display-lg text-error">2 Issues</h3>
+</div>
+<div class="flex items-center gap-1 text-on-error bg-error px-2 py-1 rounded w-fit mt-4">
+<span class="material-symbols-outlined text-[16px]">priority_high</span>
+<span class="text-[10px] font-bold">CRITICAL</span>
+</div>
+</div>
+<div class="md:col-span-2 glass-panel p-6 rounded-2xl relative overflow-hidden border-t-4 border-secondary">
+<div class="relative z-10">
+<p class="text-on-surface-variant font-label-sm uppercase mb-4">Security Trend</p>
+<div class="h-24 w-full mt-2">
+<!-- High contrast Sparkline -->
+<svg class="w-full h-full overflow-visible" viewbox="0 0 400 100">
+<path class="animate-pulse-soft" d="M0 80 Q 50 20, 100 60 T 200 40 T 300 70 T 400 30" fill="none" stroke="#6b38d4" stroke-width="3"></path>
+<circle cx="400" cy="30" fill="#6b38d4" r="5"></circle>
+</svg>
+</div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-secondary/5 to-transparent pointer-events-none"></div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-stack-lg">
+<!-- Repository List -->
+<section class="lg:col-span-2 space-y-gutter">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface">Connected Repositories</h2>
+<button class="text-primary font-label-md hover:underline">View All</button>
+</div>
+<!-- Repo Item 1 -->
+<div class="glass-panel p-5 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 group hover:border-primary/50 transition-all bg-white">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">database</span>
+</div>
+<div>
+<h4 class="font-body-lg font-bold text-on-surface">core-api-v3</h4>
+<p class="text-on-surface-variant text-body-sm font-label-md">github.com/org/core-api-v3</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-lg">
+<div class="text-right hidden md:block">
+<p class="text-[10px] font-label-sm text-on-surface-variant uppercase mb-1">LAST SCAN</p>
+<p class="text-body-sm text-on-surface">2 hours ago</p>
+</div>
+<div class="bg-on-tertiary-container/10 text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold border border-on-tertiary-container/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                SECURE
+                            </div>
+<button class="bg-primary/10 hover:bg-primary text-primary hover:text-on-primary px-6 py-2 rounded-lg font-label-md transition-all active:scale-95 border border-primary/20">
+                                Scan
+                            </button>
+</div>
+</div>
+<!-- Repo Item 2 -->
+<div class="glass-panel p-5 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 group hover:border-primary/50 transition-all bg-white">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">deployed_code</span>
+</div>
+<div>
+<h4 class="font-body-lg font-bold text-on-surface">user-auth-service</h4>
+<p class="text-on-surface-variant text-body-sm font-label-md">github.com/org/auth-service</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-lg">
+<div class="text-right hidden md:block">
+<p class="text-[10px] font-label-sm text-on-surface-variant uppercase mb-1">LAST SCAN</p>
+<p class="text-body-sm text-on-surface">1 day ago</p>
+</div>
+<div class="bg-error-container text-on-error-container px-3 py-1 rounded-full text-[10px] font-bold border border-error/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                                1 VULNERABILITY
+                            </div>
+<button class="bg-primary/10 hover:bg-primary text-primary hover:text-on-primary px-6 py-2 rounded-lg font-label-md transition-all active:scale-95 border border-primary/20">
+                                Scan
+                            </button>
+</div>
+</div>
+<!-- Repo Item 3 -->
+<div class="glass-panel p-5 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 group hover:border-primary/50 transition-all bg-white">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">cloud_queue</span>
+</div>
+<div>
+<h4 class="font-body-lg font-bold text-on-surface">legacy-billing</h4>
+<p class="text-on-surface-variant text-body-sm font-label-md">github.com/org/billing-app</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-lg">
+<div class="text-right hidden md:block">
+<p class="text-[10px] font-label-sm text-on-surface-variant uppercase mb-1">LAST SCAN</p>
+<p class="text-body-sm text-on-surface">Never</p>
+</div>
+<div class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-bold border border-outline-variant flex items-center gap-1">
+                                NOT SCANNED
+                            </div>
+<button class="bg-primary/10 hover:bg-primary text-primary hover:text-on-primary px-6 py-2 rounded-lg font-label-md transition-all active:scale-95 border border-primary/20">
+                                Scan
+                            </button>
+</div>
+</div>
+</section>
+<!-- Upload & Extras -->
+<aside class="space-y-stack-lg">
+<div class="glass-panel p-6 rounded-3xl border border-primary/20 relative overflow-hidden group bg-white">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<h3 class="font-headline-md text-[20px] text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">upload_file</span>
+                            Upload Project
+                        </h3>
+<div class="border-2 border-dashed border-outline-variant rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer hover:border-primary hover:bg-primary/5 transition-all glow-cyan" id="drop-zone">
+<span class="material-symbols-outlined text-4xl text-outline mb-4 opacity-50 group-hover:scale-110 transition-transform">folder_zip</span>
+<p class="text-body-lg font-medium text-on-surface mb-1">Drag &amp; drop .zip file</p>
+<p class="text-body-sm text-on-surface-variant">or click to browse local files</p>
+<input accept=".zip" class="hidden" type="file"/>
+</div>
+<p class="mt-6 text-[10px] text-primary uppercase tracking-widest font-bold">Security Tip</p>
+<p class="text-body-sm text-on-surface-variant mt-2 italic leading-relaxed">"Manual uploads are automatically deleted after 24 hours unless saved to a private repository cluster."</p>
+</div>
+<!-- System Status Card -->
+<div class="glass-panel p-6 rounded-3xl bg-white">
+<h3 class="font-label-sm uppercase text-on-surface-variant mb-4 tracking-wider">Infrastructure Status</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-body-sm text-on-surface">AI Scan Engine</span>
+<span class="text-secondary font-label-md text-[12px]">Operational</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-full w-[98%]"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-body-sm text-on-surface">API Connectivity</span>
+<span class="text-secondary font-label-md text-[12px]">Active</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-full w-[100%]"></div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-low border-t border-outline-variant px-container-padding py-stack-md flex flex-col md:flex-row justify-between items-center z-50 relative">
+<span class="font-label-md text-on-surface-variant">© 2024 RepoGuard AI. Fortified Intelligence.</span>
+<div class="flex gap-stack-lg mt-4 md:mt-0">
+<a class="font-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Terms of Service</a>
+<a class="font-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">API Documentation</a>
+<a class="font-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">GitHub</a>
+<a class="font-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">LinkedIn</a>
+</div>
+</footer>
+<script>
+    const dropZone = document.getElementById('drop-zone');
+    
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            dropZone.classList.add('border-primary');
+            dropZone.classList.add('bg-primary/5');
+        }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-primary');
+            dropZone.classList.remove('bg-primary/5');
+        }, false);
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+            alert('Uploading: ' + files[0].name);
+        }
+    });
+</script>
+</body></html>

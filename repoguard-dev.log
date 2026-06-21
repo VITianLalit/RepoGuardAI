@@ -1,0 +1,222 @@
+
+> repoguardai@0.1.0 dev
+> next dev --hostname 127.0.0.1 --port 3000
+
+  ▲ Next.js 14.2.5
+  - Local:        http://127.0.0.1:3000
+  - Network:      http://127.0.0.1:3000
+
+ ✓ Starting...
+ ✓ Ready in 3.8s
+ ○ Compiling /connect_your_first_project ...
+ ✓ Compiled /connect_your_first_project in 5.8s (1040 modules)
+ GET /connect_your_first_project 200 in 6527ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1522ms (851 modules)
+ GET / 200 in 1827ms
+ ✓ Compiled /favicon.ico in 336ms (434 modules)
+ GET /favicon.ico 200 in 430ms
+ GET / 200 in 184ms
+ GET /favicon.ico 200 in 15ms
+ ✓ Compiled /auth in 335ms (880 modules)
+ ✓ Compiled /connect_your_first_project in 242ms (646 modules)
+ GET / 200 in 152ms
+ ✓ Compiled /favicon.ico in 158ms (676 modules)
+ GET /favicon.ico 200 in 281ms
+ ✓ Compiled /api/github/repos in 284ms (650 modules)
+ POST /api/github/repos 200 in 3514ms
+ ✓ Compiled /api/github/repository-files in 226ms (653 modules)
+ POST /api/github/repository-files 200 in 1754ms
+ ○ Compiling /api/audit ...
+ ✓ Compiled /api/audit in 1314ms (783 modules)
+ POST /api/audit 502 in 2358ms
+ POST /api/audit 502 in 493ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 549ms (1223 modules)
+ POST /api/github/repos 404 in 676ms
+ POST /api/github/repos 404 in 38ms
+ POST /api/github/repos 404 in 40ms
+ POST /api/github/repos 404 in 32ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat 'C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\app\favicon.ico'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/favicon.ico/route' in C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server for build dependencies doesn't lead to expected result 'C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\app\favicon.ico\route.js', but to 'Error: Can't resolve '../../../../.next/server/app/favicon.ico/route' in 'C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/favicon.ico/route (expected C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\app\favicon.ico\route.js)
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\require.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\require.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\load-components.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\utils.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\utils.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\handle-externals.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\handle-externals.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at resolve commonjs C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+ ✓ Compiled in 4.7s (1097 modules)
+ ✓ Compiled in 1280ms (1097 modules)
+ ✓ Compiled in 569ms (1097 modules)
+ ✓ Compiled in 487ms (1097 modules)
+ ✓ Compiled in 362ms (451 modules)
+ ○ Compiling /api/audit ...
+ ✓ Compiled /api/audit in 1443ms (778 modules)
+ POST /api/audit 200 in 5224ms
+ ✓ Compiled in 625ms (1229 modules)
+ POST /api/audit 502 in 3377ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat 'C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\vendor-chunks'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/es-object-atoms' in C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server for build dependencies doesn't lead to expected result 'C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\vendor-chunks\es-object-atoms.js', but to 'Error: Can't resolve './vendor-chunks/es-object-atoms' in 'C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/es-object-atoms (expected C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\vendor-chunks\es-object-atoms.js)
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\webpack-runtime.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\webpack-runtime.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\app\favicon.ico\route.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\app\favicon.ico\route.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\require.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\require.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\load-components.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\utils.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\utils.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-app-loader.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-app-loader.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\bundle5.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\bundle5.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\webpack.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\webpack.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\plugins\define-env-plugin.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\plugins\define-env-plugin.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\swc\index.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\swc\index.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+<w>  at resolve commonjs C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/has-tostringtag' in C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server for build dependencies doesn't lead to expected result 'C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\vendor-chunks\has-tostringtag.js', but to 'Error: Can't resolve './vendor-chunks/has-tostringtag' in 'C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/has-tostringtag (expected C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\vendor-chunks\has-tostringtag.js)
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\webpack-runtime.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\webpack-runtime.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\app\favicon.ico\route.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\app\favicon.ico\route.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\require.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\require.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\load-components.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\utils.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\utils.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-app-loader.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-app-loader.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\bundle5.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\bundle5.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\webpack.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\webpack.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\plugins\define-env-plugin.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\plugins\define-env-plugin.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\swc\index.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\swc\index.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+<w>  at resolve commonjs C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/hasown' in C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server for build dependencies doesn't lead to expected result 'C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\vendor-chunks\hasown.js', but to 'Error: Can't resolve './vendor-chunks/hasown' in 'C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/hasown (expected C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\vendor-chunks\hasown.js)
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\webpack-runtime.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\webpack-runtime.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\app\favicon.ico\route.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\app\favicon.ico\route.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\require.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\require.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\load-components.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\utils.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\utils.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-app-loader.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-app-loader.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\bundle5.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\bundle5.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\webpack.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\webpack.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\plugins\define-env-plugin.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\plugins\define-env-plugin.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\swc\index.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\swc\index.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+<w>  at resolve commonjs C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/es-define-property' in C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server for build dependencies doesn't lead to expected result 'C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\vendor-chunks\es-define-property.js', but to 'Error: Can't resolve './vendor-chunks/es-define-property' in 'C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/es-define-property (expected C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\vendor-chunks\es-define-property.js)
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\webpack-runtime.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\webpack-runtime.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\app\favicon.ico\route.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\app\favicon.ico\route.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\require.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\require.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\load-components.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\utils.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\utils.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-app-loader.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-app-loader.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\bundle5.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\bundle5.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\webpack.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\webpack.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\plugins\define-env-plugin.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\plugins\define-env-plugin.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\swc\index.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\swc\index.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+<w>  at resolve commonjs C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/gopd' in C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server for build dependencies doesn't lead to expected result 'C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\vendor-chunks\gopd.js', but to 'Error: Can't resolve './vendor-chunks/gopd' in 'C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/gopd (expected C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\vendor-chunks\gopd.js)
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\webpack-runtime.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\webpack-runtime.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\app\favicon.ico\route.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\.next\server\app\favicon.ico\route.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\require.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\require.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\load-components.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\utils.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\utils.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-app-loader.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-app-loader.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\bundle5.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\bundle5.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\webpack.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\compiled\webpack\webpack.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\plugins\define-env-plugin.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\plugins\define-env-plugin.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\swc\index.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\swc\index.js
+<w>  at file dependencies C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+<w>  at file C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+<w>  at resolve commonjs C:\Users\lalit\Desktop\RepoGuard AI\repoguardai\node_modules\next\dist\build\webpack\loaders\next-barrel-loader.js
+ ✓ Compiled in 3.6s (451 modules)
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Unexpected token `html`. Expected jsx identifier
+    ,-[[36;1;4mC:\Users\lalit\Desktop\RepoGuard AI\repoguardai\src\app\layout.tsx[0m:14:1]
+ [2m14[0m |   children: React.ReactNode;
+ [2m15[0m | }>) {
+ [2m16[0m |   return (
+ [2m17[0m |     <html lang="en" className="light h-full antialiased">
+    : [31;1m     ^^^^[0m
+ [2m18[0m |       <head>
+ [2m19[0m |         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+ [2m20[0m |         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+ ✓ Compiled in 1868ms (1103 modules)
+ ✓ Compiled in 1190ms (1103 modules)
+   Reload env: .env.local
