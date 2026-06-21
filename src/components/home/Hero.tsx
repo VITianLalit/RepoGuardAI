@@ -12,7 +12,7 @@ export default function Hero() {
         </div>
         <h1 className="font-display-lg text-display-lg md:text-6xl font-extrabold tracking-tight text-on-surface leading-tight">
           Agentic AI-Powered <br />
-          <span className="text-primary">Security Audits</span>
+          <span className="text-primary md:text-9xl">Security Audits</span>
         </h1>
         <p className="mx-auto w-full max-w-[42rem] text-on-surface-variant text-lg md:text-xl font-body-lg leading-relaxed">
           Automate complex repository vulnerability discovery with intelligent AI agents that think like hackers and secure like engineers.

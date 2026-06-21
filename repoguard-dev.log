@@ -220,3 +220,4 @@ Import trace for requested module:
  ✓ Compiled in 1868ms (1103 modules)
  ✓ Compiled in 1190ms (1103 modules)
    Reload env: .env.local
+ ○ Compiling /_not-found ...
