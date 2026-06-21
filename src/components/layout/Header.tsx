@@ -17,7 +17,7 @@ const navItems: Record<HeaderVariant, { label: string; href: string }[]> = {
   dashboard: [
     { label: "Connect", href: "/connect_your_first_project" },
     { label: "Report", href: "/dashboard#reports" },
-    { label: "Fix center", href: "/#recommendations" },
+    // { label: "Fix center", href: "/#recommendations" },
   ],
   auth: [
     { label: "Features", href: "/#features" },
