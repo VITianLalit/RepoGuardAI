@@ -76,7 +76,7 @@ function EmptyState({ onDemo }: { onDemo: () => void }) {
         <ShieldAlert className="h-6 w-6" />
       </div>
       <h3 className="font-headline-md text-xl font-semibold">No audit report yet</h3>
-      <p className="mx-auto mt-2 max-w-xl text-sm text-on-surface-variant">
+      <p className="mx-auto mt-2 text-sm text-on-surface-variant">
         Connect a GitHub repository or upload a ZIP to generate a report. You can
         also load a bundled sample to explore the dashboard.
       </p>
