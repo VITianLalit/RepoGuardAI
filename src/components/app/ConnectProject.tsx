@@ -28,7 +28,7 @@ import { filterSourceFiles } from "@/lib/file-filter";
 import { persistReportToSupabase } from "@/lib/report-persistence";
 import { saveReportForDashboard } from "@/lib/report-storage";
 
-import { isSupabaseConfigured, supabase } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase";
 import type { AuditPayload, AuditReport, RepoSummary, SourceFile } from "@/lib/types";
 
 const TOKEN_KEY = "repoguard-github-token";
@@ -276,7 +276,7 @@ function AnalysisOverlay({
 /* ─── Main component ──────────────────────────────────────────────────────── */
 export default function ConnectProject() {
   const router = useRouter();
-  const [authReady, setAuthReady]     = useState(!isSupabaseConfigured);
+  const [authReady, setAuthReady]     = useState(false);
   const [githubToken, setGithubToken] = useState(() =>
     typeof window === "undefined" ? "" : localStorage.getItem(TOKEN_KEY) ?? "",
   );
@@ -307,19 +307,14 @@ export default function ConnectProject() {
 
   /* auth gate */
   useEffect(() => {
+    if (!supabase) { router.replace("/auth"); return; }
     let mounted = true;
     async function verifySession() {
-      if (!isSupabaseConfigured || !supabase) {
-        if (!localStorage.getItem("repoguard-demo-user")) { router.replace("/auth"); return; }
-        if (mounted) setAuthReady(true);
-        return;
-      }
-      const { data: { session } } = await supabase.auth.getSession();
+      const { data: { session } } = await supabase!.auth.getSession();
       if (!session) { router.replace("/auth"); return; }
       if (mounted) setAuthReady(true);
     }
     void verifySession();
-    if (!supabase) return () => { mounted = false; };
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, session) => {
       if (!session) router.replace("/auth");
     });
