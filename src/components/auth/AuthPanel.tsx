@@ -10,6 +10,12 @@ type Mode = "sign-in" | "sign-up" | "forgot";
 
 const AUTH_SUCCESS_PATH = "/connect_your_first_project";
 
+// Always use the deployed production URL for Supabase email redirect links.
+// Falls back to window.location.origin only in local dev when env var is not set.
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (typeof window !== "undefined" ? window.location.origin : "https://repo-guard-ai-beta.vercel.app");
+
 export default function AuthPanel({ initialMode }: { initialMode: Mode }) {
   const router = useRouter();
   const [mode, setMode] = useState<Mode>(initialMode);
@@ -45,7 +51,7 @@ export default function AuthPanel({ initialMode }: { initialMode: Mode }) {
       // ── Forgot password ───────────────────────────────────────────────────
       if (mode === "forgot") {
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: `${window.location.origin}${AUTH_SUCCESS_PATH}`,
+          redirectTo: `${SITE_URL}${AUTH_SUCCESS_PATH}`,
         });
         if (error) throw error;
         toast.success("Password reset email sent — check your inbox.", { duration: 6000, icon: "📧" });
@@ -60,7 +66,7 @@ export default function AuthPanel({ initialMode }: { initialMode: Mode }) {
           password,
           options: {
             data: { name },
-            emailRedirectTo: `${window.location.origin}${AUTH_SUCCESS_PATH}`,
+            emailRedirectTo: `${SITE_URL}${AUTH_SUCCESS_PATH}`,
           },
         });
         if (error) throw error;
